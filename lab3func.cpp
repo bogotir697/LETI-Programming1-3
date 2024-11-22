@@ -23,7 +23,7 @@ COORD GetConsoleCursorPosition(HANDLE hConsoleOutput)
 	}
 }
 
-void putElem(int* matrix, int n, int power, int* elem, int maxLen, int startX = 1, int startY = 1) {
+void putElem(int* matrix, int n, int power, int* elem, int maxLen, int startX, int startY) {
 	int elemPos = elem - matrix;
 	gotoxy((elemPos % n) * (len(maxLen) + 1) + startX, elemPos / n + startY);
 	cout << repeatString(" ", len(maxLen) - len(*elem)) << *elem << " ";
@@ -63,7 +63,7 @@ int findMaxLen(int* matrix, int n, int power) {
 	return maxLen;
 }
 
-void createMatrix(int* matrix, int n, int power, int min = 1, int max = N * N) {
+void createMatrix(int* matrix, int n, int power, int min, int max) {
 	int* end = matrix + int(pow(n, power)) - 1;
 	for (matrix; matrix <= end; matrix++) {
 		*matrix = randInt(min, max);
